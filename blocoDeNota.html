@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notas</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+div{
+  width: 50%
+}
+    </style>
+  </head>
+  <body>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script> 
+    var contaLinha = 0;
+    function adicionarNota(){
+      contaLinha ++;
+      	var salvar = document.calc.visor.value;
+
+           var conteudo = "<tr><td>" + salvar + "</td>";
+           var botao = "<td  id='tabela_linha_" + contaLinha + "'><input type='button' class='btn btn-danger btn-sm' value='x' onClick=\"removeLinha('tabela_linha_"+contaLinha+"')\"></input>";
+
+           document.getElementById("table").innerHTML += conteudo + botao;
+           document.getElementById("table").innerHTML += "</td></tr>";
+
+           }
+            function removeLinha(id){
+
+               linha = document.getElementById(id);
+               linha.parentNode.parentNode.removeChild(linha.parentNode);
+}
+  
+    </script>
+    <center>
+		<form name="calc" method="post">
+<div class="form-group">
+  	<legend>Notas</legend>
+
+  	<table class="tabela table-hover" id="table">
+
+			<tr>
+     <td><input type="text" class="form-control" name="painel"  id="visor" placeholder="Criar uma nota..."/></td>      
+      <td><input type="button" name="add" class="btn btn-success" value="Adicionar" onclick="adicionarNota()" /></td>
+			</tr>
+  	</table>
+</div>
+      </form>
+
+	</center>
+    
+  </body>
+</html>
